@@ -1,0 +1,27 @@
+.selected-restoran 
+{
+    grid-area: selectedrestoran;
+    padding-top:20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    background: #000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.6);
+    color: white;
+    animation-duration: 1s;
+}
+.selectedRest{
+    width : 100%;
+    font-weight: 500;
+    padding-left:22px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+}
+.fa-angle-left
+{
+    font-weight: 900;
+    font-size: 35px;
+    padding-right: 5px;
+}

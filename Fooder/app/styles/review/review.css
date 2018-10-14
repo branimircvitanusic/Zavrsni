@@ -1,0 +1,65 @@
+.rev-wrap{
+    width: 100%;
+    padding : 30px;
+}
+.rev-heading
+{
+    height: 60px;
+    background-color: #173233;
+    width: 100%;
+    color : white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.rev-active
+{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+}
+.rev-buttons
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.rev-btn-accept
+{
+    background-color: #4CAF50;
+    width: 48%;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}         
+.rev-btn-close
+{
+    background-color: #f44336;
+    width: 48%;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.hide-buttons
+{
+    display: none;
+}
+.rev-finish-button{
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+

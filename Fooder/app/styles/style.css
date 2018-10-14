@@ -1,0 +1,206 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:0;
+    background-color: #f2efef;      
+}
+.site 
+{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh; 
+    margin: auto;         
+}
+/*********** MEDIA QUERYIES ***************/
+@supports (display: grid) {
+        @media screen and (min-width: 50px) {
+            .site {
+                display: grid;
+                grid-template-rows: auto auto auto 1fr auto;
+                grid-template-areas: 
+                    "navigation "
+                    "location "
+                    "selectedrestoran"
+                    "main"
+                    "footer";
+            }
+            .main 
+            {
+                display: grid;
+                grid-template-rows: 4em auto;
+                grid-template-areas: 
+                    "main-state "
+                    "main-interact ";
+                grid-area: main;
+            }
+            .main-state 
+            {
+                grid-area: main-state;
+                padding: 18px;
+                display: flex;
+                color: white; 
+                background-color: black;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.6);
+            }
+            .previous-state
+            {
+                display: none;
+            }
+            .next-state
+            {
+                display: none;
+            }
+            .footer {
+                grid-area: footer;
+            }
+        }
+ }
+.main
+{
+    display: flex;
+    flex-direction:column;
+    margin: 0 0 0 0;  
+    padding-bottom:12px;
+    
+}
+.main-state > ul 
+{
+    width: 100%;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+}
+.active-state
+{
+    display: inline-flex;
+    color: #4CAF50;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+}
+
+hr 
+{
+    width:80%;
+    margin: auto;
+}
+.footer
+{   margin-bottom:0;
+    background-color: black;
+    color:#FFF;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+@supports (display: grid) {
+    
+    @media screen and (min-width: 550px) {
+        .site {
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto auto 1fr auto;
+            grid-template-areas: 
+                "navigation navigation navigation"
+                "location location location"
+                "selectedrestoran selectedrestoran selectedrestoran"
+                "main main main"
+                "footer footer footer";
+        }
+    
+        .active-state
+        {
+            width: 33.3%;
+        }
+        .previous-state
+        {
+            margin-left: 0;
+            width: 33.3%; 
+            display: flex;
+            justify-content: flex-start;
+            text-decoration: line-through;
+        }
+        .next-state
+        {
+            width: 33.3%;
+            margin-right: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .aside {
+            grid-area: aside;
+        }
+        .footer {
+            grid-area: footer;
+        }
+    }
+}
+
+ @supports (display: grid) {
+        @media screen and (min-width: 800px) {
+            .site {
+                max-width: 1100px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto auto auto 1fr auto;
+                grid-template-areas: 
+                    "navigation navigation navigation"
+                    "location location aside"
+                    "selectedrestoran selectedrestoran aside"
+                    "main main aside"
+                    "footer footer footer";
+                
+            }
+            .aside
+            {
+                display:flex;
+                padding-top:12px;
+                padding-left: 12px;
+                padding-bottom: 12px;
+            }
+           
+            .aside 
+            {
+                grid-area: aside;
+            }
+            .footer {
+                grid-area: footer;
+            }
+        }
+ }
+
+.hider{
+    display: none;
+}
+
+.clickable
+{
+    cursor: pointer;
+}
+.cover
+{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    background-color: rgba(255,255,255,0.8);
+    z-index: 1;
+}
+.rest-showed{
+    font-size: 25px;
+}
+
+

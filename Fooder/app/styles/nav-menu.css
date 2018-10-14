@@ -1,0 +1,137 @@
+
+
+@media screen and (min-width: 50px) {
+nav
+{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+a
+{
+  text-decoration: none;
+  color: #232323;
+  transition: color 0.3s ease;
+}
+a:hover
+{
+  color: tomato;
+}
+#menuToggle
+{
+  display: block;
+  top:50px;
+  left:50px;
+  margin: auto;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #2e2e2e;
+  border-radius: 3px;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+  margin-bottom: 0px;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+.open > span
+{
+  z-index: 2;
+  transform: rotate(45deg) translate(-2px, -1px);
+  color: #232323;
+}
+/*
+ * But let's hide the middle one.
+ */
+.open > span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+.open > span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.651);
+  position: absolute;
+  height: auto;
+  margin-top:30px;
+  left: 0;
+  right : 0;
+  padding: 20px;
+  background: white;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+.menu-closed
+{
+    transform: translate(0,-250px);
+} 
+#menu li
+{
+  font-weight: 300;
+  padding: 10px 0;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease-in;
+}
+#menu li:hover
+{
+  color:#4CAF50;
+}
+
+
+/*
+ * And let's slide it in from the left
+ */
+.open > ul
+{
+  transform: none;
+}
+}
+
+@media screen and (min-width: 800px) {
+    #menuToggle
+    {
+        display: none;
+    }
+}

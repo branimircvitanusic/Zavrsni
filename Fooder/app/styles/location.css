@@ -1,0 +1,29 @@
+.location
+{
+    grid-area: location;
+    display: flex;
+    justify-content: center;
+    flex: auto;
+    height: 6em;
+    padding:1em;
+    
+}
+select
+{
+    cursor: pointer;
+    background-color:white;
+    font-weight: 700;
+    color:black;
+    border: none;
+    height: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.6);
+}
+.separator
+{
+    height:50%;
+    width:5%;
+} 

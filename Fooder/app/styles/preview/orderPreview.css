@@ -1,0 +1,91 @@
+.order-wrapper
+{
+    width: 100%;
+    padding:20px;
+    padding-bottom: 0;
+}
+.articles-heading
+{
+    height: 60px;
+    background-color: #173233;
+    width: 100%;
+    color : white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.articles-body
+{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+}
+.previewButtons
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.prev-btn-next
+{
+    background-color: #4CAF50;
+    width: 48%;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}         
+.prev-btn-back
+{
+    background-color: #f44336;
+    width: 48%;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+} 
+@media screen and (min-width : 50px)
+{
+    .prev-btn-back
+    {
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .prev-btn-next
+    {
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .articles-heading h2{
+        font-size: 15px;
+        font-weight: 500;
+    }
+}
+@media screen and (min-width : 450px)
+{
+    .prev-btn-back
+    {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .prev-btn-next
+    {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .articles-heading h2{
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+

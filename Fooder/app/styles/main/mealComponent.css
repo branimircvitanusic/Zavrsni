@@ -1,0 +1,82 @@
+/* .select-meal
+{
+    display: grid;
+    grid-template-rows: auto min-content;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+    "meal-name meal-price"
+    "meal-addings meal-addings";
+    background-color: #FFF;
+    padding:12px 18px 12px 18px;
+    margin-top:5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.6);
+    width:100%;
+    animation-duration: 1s;
+}  */
+.select-meal
+{
+    width:100%;
+    background-color: #FFF;
+    padding:12px 18px 12px 18px;
+    margin-top:5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.6);
+    animation-duration: 1s;
+} 
+.name-price
+{
+    display: flex;
+    width: 100%;
+    
+}
+.select-meal-name
+{
+    grid-area: meal-name;
+    display: flex;
+    justify-content: flex-start;
+    font-weight: 500;
+    padding: 2px;
+    width: 70%;
+}
+
+.select-meal-price
+{
+    grid-area: meal-price;
+    display: flex;
+    width: 30%;
+    justify-content: flex-end;
+    
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 700;
+    color: #4CAF50;
+}
+.select-meal-addings
+{
+    grid-area: meal-addings;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-weight: 300;
+    padding: 2px;
+    height: auto;
+}
+.p-addings{
+    text-align: left;
+    margin: 0 0 0 0;
+    font-size: 1em;
+    font-weight: 200;
+    color:rgb(133, 133, 133);
+    display:block;
+    width:100%;
+    word-wrap:break-word;
+    
+}
+@media screen and (min-width : 800px)
+{
+    .select-meal:hover
+    {
+    transform: scale(1.01);
+    }
+}

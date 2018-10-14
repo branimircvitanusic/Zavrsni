@@ -1,0 +1,62 @@
+
+.rev-one{
+    background: white;
+    text-align: center;
+    padding-top:40px;
+    padding-bottom: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.rev-code-input
+{
+    width: 60%;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    color:#173233;;
+    font-weight: 700;
+    font-size: 18px;
+}
+.rev-code-input:focus {
+    outline: none !important;
+    border:1px solid #00969b;
+    box-shadow: 0 0 10px #719ECE;
+}
+.rev-number{
+    padding-top: 10px;
+}
+.rev-buttons
+{
+    padding-top: 8px;
+}
+@media screen and (min-width:50px)
+{
+    .rev-code-input
+    {
+    width: 80%;
+    font-weight: 650;
+    font-size: 16px;
+    }
+    .rev-one-message p
+    {
+        font-size: 15px;
+        font-weight: 500;
+    }
+}
+@media screen and (min-width:450px)
+{
+    .rev-code-input
+    {
+    width: 65%;
+    font-weight: 700;
+    font-size: 18px;
+    }
+    .rev-one-message p
+    {
+        font-size: 16px;
+        font-weight: 500;
+    }
+}

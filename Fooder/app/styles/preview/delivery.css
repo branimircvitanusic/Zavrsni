@@ -1,0 +1,74 @@
+.del-container
+{
+    margin-bottom: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.6);
+    padding: 25px;
+    animation-duration: 1s;
+}
+.del-list
+{
+    width: 100%;
+    text-decoration: none;
+}
+.del-list li
+{
+    display: inline-flex;
+    padding: 10px;
+}
+.del-label
+{
+    color: #173233;
+    justify-content: flex-end;
+    font-weight:450;
+}
+
+.del-input input
+{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+.del-input input:focus {
+    outline: none !important;
+    border:1px solid #00969b;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+@media screen and (min-width : 50px)
+{
+    .del-input
+    {
+        width: 100%;
+    }
+    .del-input input
+    {
+        text-align: center;
+    }
+    .del-label
+    {
+        width: 100%;
+        justify-content: center;
+    }
+}
+@media screen and (min-width : 450px)
+{
+    .del-label
+    {
+        width:30%;
+    }
+    .del-input{
+        width: 70%;
+    }
+    .del-input input
+    {
+        text-align: left;
+    }
+}
+
+
+
+

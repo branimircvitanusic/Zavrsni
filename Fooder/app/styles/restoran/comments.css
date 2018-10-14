@@ -1,0 +1,37 @@
+.r-i-comments-container
+{
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+.r-i-comment
+{
+    padding: 5px;
+}
+.r-i-comment-name
+{
+    font-size: 15px;
+    font-weight: 500;
+    color: #173233;
+}
+.r-i-comment-rate
+{
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: 450;
+    color: #173233;
+}
+.r-i-comm-star:first-of-type
+{
+    padding-left: 10px;
+}
+.r-i-comment-value
+{
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    padding-top:3px;
+    padding-bottom: 3px;
+    font-style: italic;
+}

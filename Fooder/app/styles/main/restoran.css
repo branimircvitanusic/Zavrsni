@@ -1,0 +1,83 @@
+@supports (display: grid) {
+
+@media screen and (min-width: 50px) {
+    .restoran
+    {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 
+        "img name "
+        "img rate "
+        "img comment";
+        background-color: white;
+        margin:4px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(59, 57, 57, 0.6);
+        animation-duration: 1s;
+    }
+    .restoran-img
+    {
+    grid-area: img;
+    display: flex;
+    }
+    .restoran-name
+    {
+        grid-area:name;
+        display: flex;
+        justify-content: center;
+    }
+    .restoran-name > h5
+    {
+        margin: auto;
+    }
+    .restoran-com
+    {
+        grid-area:comment;
+        display: flex;
+        color:#4CAF50;
+        justify-content: center;
+    }
+    .restoran-rate
+    {
+        grid-area: rate;
+        display: flex;
+        color:#4CAF50;
+        justify-content: center;
+    }
+    .rate-number
+    {
+    padding-left: 5px;
+    color:black;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    }
+     
+}
+}
+@supports (display: grid) {
+    @media screen and (min-width: 550px) {
+        .restoran{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: 60% 20% 20%; 
+             grid-template-areas:
+             "img img"
+             "name name"
+             "rate comment" ;
+        }
+        .restoran:hover
+        {
+        transform:scale(1.01);
+        } 
+    }
+}
+i
+{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1%;
+}
+
+    

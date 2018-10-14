@@ -1,0 +1,11 @@
+.rev-finish{
+    background: white;
+    width: 100%;
+    padding: 30px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+.rev-finish-message{
+    color:#173233;
+    margin-bottom: 0;
+}
