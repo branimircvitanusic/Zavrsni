@@ -22,7 +22,7 @@ class Login extends Component {
     const { open } = this.state;
     return (
       <div className="text-center">
-        <button class="btn-outline-primary btn-lg btn-outline-dark" onClick={this.onOpenModal}>Open modal</button>
+        <button class="btn-outline-primary btn-lg btn-outline-dark" onClick={this.onOpenModal}>Login/Register</button>
         <Modal open={open} onClose={this.onCloseModal}>
        
         <div className="modal-fade">
