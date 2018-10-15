@@ -3,6 +3,7 @@
     grid-area: location;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex: auto;
     height: 6em;
     padding:1em;

@@ -1,0 +1,52 @@
+.modal-header
+{
+    padding:0;
+}
+.header-active
+{
+    background-color: #007bff;
+    color:white;
+}
+.header-half{
+    width:50%;
+    padding:20px 0 20px;
+
+}
+.modal-title
+{
+    text-align:center;
+    cursor:pointer;
+}
+
+.login-label
+{
+    padding-top:15px;
+    padding-bottom: 4px;
+}
+.input-container
+{
+    padding-bottom : 30px;
+}
+.login-buttons-wrap
+{
+    display:flex;
+    margin:auto;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.forgot-password
+{
+    margin-top:10px;
+    cursor : pointer;
+}
+.register-message
+{
+    margin-bottom:10px;
+    cursor : pointer;
+}
+.back-to-login
+{
+    margin-top:10px;
+    cursor : pointer;
+}

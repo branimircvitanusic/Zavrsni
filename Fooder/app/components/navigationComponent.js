@@ -38,17 +38,13 @@ export class NavigationComponent extends React.Component {
                 <span className={this.state.hamClicked ? "paint-span": ""}></span>
                 <ul id="menu" className={this.state.hamClicked ? "menu-showed":"menu-closed"}>
                 <a href="#"><li>POČETNA</li></a>
-                
                 </ul>
             </div>
             </nav>
                 <h1>FOODER</h1>
-               <ul className="nav-menu">
-                 <button type="submit" className="btn-login">Login/Register</button>
-                  </ul>
-                  
-                  
-                 
+            </div>
+            <div className="login-btn-wrap">
+                <button onClick = {this.props.handleLoginClick} className="btn btn-outline-success btn-login">Prijavi se</button>
             </div>
                 <ul className="nav-cart">
                    <li className="nav-cart-price">{this.props.navCartPrice} HRK</li>

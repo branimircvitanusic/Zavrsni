@@ -23,7 +23,7 @@ class Login extends Component {
     return (
       <div className="text-center">
         <button class="btn-outline-primary btn-lg btn-outline-dark" onClick={this.onOpenModal}>Login/Register</button>
-        <Modal open={open} onClose={this.onCloseModal}>
+        <Modal visibility = {true} open={open} onClose={this.onCloseModal}>
        
         <div className="modal-fade">
           <div className="modal-header">
