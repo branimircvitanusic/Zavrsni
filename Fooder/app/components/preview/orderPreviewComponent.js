@@ -89,7 +89,7 @@ render()
         <h2 className="heading-text">Informacije za dostavu</h2>
     </div>
     <div className="articles-body">
-        <DeliveryInfoComponent />
+        <DeliveryInfoComponent signedInUser = {this.props.signedInUser}/>
         <div className="previewButtons">
             <button onClick={this.handleBack} className="prev-btn-back">NAZAD</button>
             <button onClick={this.handleNext} className="prev-btn-next">DALJE</button>

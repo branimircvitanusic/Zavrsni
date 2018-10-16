@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 
-var validator = require("email-validator");
 
 export class Login extends Component{
     constructor(props)
@@ -13,8 +12,6 @@ export class Login extends Component{
     }
     handleEmailChange(event)
     {
-        ///validate email 
-        ///validator.validate("example@example.com") returns true
         this.setState({email:event.target.value});
     }
     handlePasswordChange(event)
@@ -23,6 +20,7 @@ export class Login extends Component{
     }
     handleLogin()
     {
+        
         this.props.handleLogin(this.state);
     }
     render()

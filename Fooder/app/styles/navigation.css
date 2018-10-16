@@ -92,3 +92,21 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+.user-signed-in
+{
+    display:flex;
+    color: #848080;
+    justify-content : center;
+    align-items : center;
+}
+.user-signout-icon
+{
+    padding-left: 10px;
+    font-size: 20px;
+}
+.user-signout-icon:hover
+{
+    cursor : pointer;
+    transform : scale(1.15);
+}

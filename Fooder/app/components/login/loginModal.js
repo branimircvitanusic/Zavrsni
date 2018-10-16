@@ -4,6 +4,9 @@ import '../../styles/login/loginModal.css';
 import {Login} from './login.js';
 import {Register} from './register.js';
 
+import fire from '../../config/FirebaseConfig.js';
+import { InfoModal } from '../info/infoModal';
+
 
 var validator = require("email-validator");
 
@@ -12,11 +15,12 @@ export class LoginModal extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {isLogin : true, isRegister : false};
+        this.state = {isLogin : true, isRegister : false,infoMessage : '', showInfo : false};
         this.handleLogin = this.handleLogin.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
         this.isLogin = this.isLogin.bind(this);
         this.isRegister = this.isRegister.bind(this);
+        this.closeInfoModal = this.closeInfoModal.bind(this);
     }
     isLogin()
     {
@@ -29,20 +33,40 @@ export class LoginModal extends Component{
     handleLogin(user)
     {
         //api call to login user
-        console.log(user);
+        fire.auth().signInWithEmailAndPassword(user.email, user.password)
+        .then(response => {
+            this.props.userLoggedIn(user);
+        })
+        .catch(error => {
+            this.setState({showInfo : true,infoMessage : error.message})
+        })
     }
-    handleRegister(user)
+    async handleRegister(user)
     {
         //api call to register user
-        console.log(user);
+        await fire.auth().createUserWithEmailAndPassword(user.email,user.password)
+        .then(response => 
+            {
+                var db = fire.firestore();
+                db.collection('users').doc(response.user.uid).set({firstName : user.firstName,lastName : user.lastName , email : user.email, phone : user.phone,adress : user.adress})
+                .then(this.setState({isLogin : true, isRegister : false, showInfo : true,infoMessage : "Registration successfull!"}))
+            })
+        .catch(error => 
+            {
+                this.setState({showInfo : true, infoMessage : error.message})
+            })
     }
-  
+    closeInfoModal()
+    {
+        this.setState({showInfo : false, infoMessage : ''})
+    }
+    
     render()
     {
         var active = this.state.isLogin ?  
         <Login handleLogin = {this.handleLogin}/>
         :
-        <Register handleRegister = {this.handleRegister}/>
+        <Register backToLogin = {this.isLogin} handleRegister = {this.handleRegister}/>
 
         return(
             <Modal visible={this.props.visible} onClickBackdrop={this.modalBackdropClicked}>
@@ -62,6 +86,7 @@ export class LoginModal extends Component{
                     Close
                 </button>
                 </div>
+                <InfoModal visible={this.state.showInfo} message={this.state.infoMessage} onClose= {this.closeInfoModal}/>
             </Modal>
         )
     }

@@ -50,3 +50,18 @@
     margin-top:10px;
     cursor : pointer;
 }
+.hidden
+{
+    display: none;
+}
+.validator-message
+{
+    font-size: 10px;
+    color : red;
+}
+.info-modal-title
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}

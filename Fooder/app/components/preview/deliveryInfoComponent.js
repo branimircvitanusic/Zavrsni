@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/preview/delivery.css';
 import '../../styles/animate.css';
+import fire from '../../config/FirebaseConfig.js';
 
 export class DeliveryInfoComponent extends React.Component 
 {
@@ -13,7 +14,34 @@ export class DeliveryInfoComponent extends React.Component
         this.adresaChange = this.adresaChange.bind(this);
         this.kontaktChange = this.kontaktChange.bind(this);
     }
-  
+
+    componentDidMount()
+    {
+        var db = firebase.firestore();
+        var userRef = db.collection("users").doc(this.props.signedInUser.uid);
+        userRef.get()
+            .then(doc => 
+            {
+                if (doc.exists) 
+                {
+
+                    var userData = doc.data();
+                    this.setState ({
+                        ime : userData.firstName,
+                        prezime : userData.lastName,
+                        adresa : userData.adress,
+                        kontakt : userData.phone
+                    });
+                } 
+                else 
+                {
+                    console.log("No such document!");
+                }
+            })
+            .catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+    }
     imeChange(event)
     {
         this.setState({ime : event.target.value});

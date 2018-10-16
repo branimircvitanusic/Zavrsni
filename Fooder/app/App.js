@@ -12,13 +12,14 @@ import { ChangeRestoran } from './components/changeRestoran';
 import { restoran } from './data/restaurants';
 import {RestoranInfoComponent} from './components/restoran/restoranInfoComponent';
 import {LoginModal} from './components/login/loginModal.js';
-
+import fire from './config/FirebaseConfig.js';
+import {InfoModal} from './components/info/infoModal.js';
 
 export class App extends React.Component {
     constructor(props)
     {
         super(props);
-        this.state ={Grad : '', Kvart : '',Restoran : '', RestoranInfo : '',infoShow : false, reviewShow : false,Meal : {}, app_state:0,finalOrder : {},clearCart:false,showCart : false,showNav : false, navCartPrice : 0, showLogin : false};
+        this.state ={Grad : '', Kvart : '',Restoran : '', RestoranInfo : '',infoShow : false, reviewShow : false,Meal : {}, app_state:0,finalOrder : {},clearCart:false,showCart : false,showNav : false, navCartPrice : 0, showLogin : false,signedInUser : null,showInfoModal : false};
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
         this.handleRestoranSelected = this.handleRestoranSelected.bind(this);
         this.forceRestSelect = this.forceRestSelect.bind(this);
@@ -37,6 +38,34 @@ export class App extends React.Component {
         this.handleRevClose = this.handleRevClose.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLoginClose = this.handleLoginClose.bind(this);
+        this.userLoggedIn = this.userLoggedIn.bind(this);
+        this.logoutUser = this.logoutUser.bind(this); 
+        this.closeInfoModal = this.closeInfoModal.bind(this);
+    }
+    componentWillMount()
+    {  
+        this.removeAuthListener = fire.auth().onAuthStateChanged((user)=>{
+            if(user)
+            {
+                this.setState({signedInUser : user})
+            }
+            else
+            {
+                this.setState({signedInUser : null})
+            }
+        })
+    }
+    componentWillUnmount()
+    {
+        this.removeAuthListener();
+    }
+    logoutUser()
+    {
+        fire.auth().signOut();
+    }
+    userLoggedIn()
+    {
+        this.setState({showLogin : false})
     }
     handleLoginClick()
     {
@@ -115,7 +144,14 @@ export class App extends React.Component {
     }
     getFinalOrder(order)
     {
+        if(this.state.signedInUser == null)
+        {
+            this.setState({ Meal : null,showInfoModal : true, infoMessage : 'Please log in to continue'});
+        }
+        else
+        {
         this.setState({app_state : 3,finalOrder:order,Meal : null});
+        }
     }
     priceChange(price,rest)
     {
@@ -125,9 +161,14 @@ export class App extends React.Component {
             this.setState({navCartPrice : newPrice,Meal : null,Restoran : '',app_state : 1});
         else
             this.setState({navCartPrice : newPrice,Meal : null });
-        }
-    render() 
+    }
+    closeInfoModal()
     {
+        this.setState({showInfoModal : false, infoMessage : ''})
+    }
+   
+    render() 
+    {   
         var orderPreview = null;
         var restoranInfo = null;
         var reviewWindow = null;
@@ -146,7 +187,7 @@ export class App extends React.Component {
         orderPreview = 
         <div className = "preview-showed">
             <div className="preview">
-                <OrderPreview finishPreview = {this.finishPreview} closePreview = {this.closePreview} order = {this.state.finalOrder} />
+                <OrderPreview signedInUser = {this.state.signedInUser} finishPreview = {this.finishPreview} closePreview = {this.closePreview} order = {this.state.finalOrder} />
             </div>
         </div>
         }
@@ -173,7 +214,7 @@ export class App extends React.Component {
       
         <div className="site">
 
-            <NavigationComponent handleLoginClick = {this.handleLoginClick} showReviewScreen = {this.showReviewScreen} cartClicked = {this.cartClicked} navClicked = {this.navClicked} navCartPrice = {this.state.navCartPrice}/>
+            <NavigationComponent logoutUser = {this.logoutUser} signedInUser = {this.state.signedInUser} handleLoginClick = {this.handleLoginClick} showReviewScreen = {this.showReviewScreen} cartClicked = {this.cartClicked} navClicked = {this.navClicked} navCartPrice = {this.state.navCartPrice}/>
             
             <LocationComponent  handleLocationSelected = {this.handleLocationSelected}/>
             {restoranOdabran}
@@ -201,7 +242,9 @@ export class App extends React.Component {
             <div className={this.state.app_state == 3 || this.state.infoShow  || this.state.reviewShow ? "preview-cover" : "hider"}></div>
         
             {/* LOGIN MODAL */}
-            <LoginModal visible = {this.state.showLogin} onClose = {this.handleLoginClose}/>
+            <LoginModal userLoggedIn = {this.userLoggedIn} visible = {this.state.showLogin} onClose = {this.handleLoginClose} />
+            
+            <InfoModal visible = {this.state.showInfoModal} message = {this.state.infoMessage} onClose = {this.closeInfoModal}/>
         </div>
      
       );     

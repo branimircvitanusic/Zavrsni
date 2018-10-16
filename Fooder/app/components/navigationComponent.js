@@ -26,7 +26,18 @@ export class NavigationComponent extends React.Component {
         this.setState ({hamClicked : !this.state.hamClicked});
         this.props.navClicked(!this.state.hamClicked);
     }
-    render() { 
+    
+    render() {
+        var userField = null;
+        var signedInUser = this.props.signedInUser;
+        if(signedInUser == null)
+        {
+            userField = <button onClick = {this.props.handleLoginClick} className="btn btn-outline-success btn-login">Prijavi se</button>
+        }
+        else
+        {
+            userField = <div className="user-signed-in">{signedInUser.email} <span onClick = {() => {this.props.logoutUser()}}className="user-signout-icon"><i className="fa fa-sign-out"></i></span></div>
+        }
         return (  
             <header className="navigation">
             <div className="nav-wrapper">
@@ -44,7 +55,7 @@ export class NavigationComponent extends React.Component {
                 <h1>FOODER</h1>
             </div>
             <div className="login-btn-wrap">
-                <button onClick = {this.props.handleLoginClick} className="btn btn-outline-success btn-login">Prijavi se</button>
+                {userField}
             </div>
                 <ul className="nav-cart">
                    <li className="nav-cart-price">{this.props.navCartPrice} HRK</li>
