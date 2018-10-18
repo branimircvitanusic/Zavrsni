@@ -35,7 +35,7 @@ export class Login extends Component{
             </div>
             <div className="login-buttons-wrap">
                 <button onClick={this.handleLogin} className="btn btn-outline-primary">LOGIN</button>
-                <a className="forgot-password">Zaboravili ste lozinku?</a>
+               
             </div>
         </div>
         )
