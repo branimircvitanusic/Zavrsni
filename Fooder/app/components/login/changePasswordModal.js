@@ -13,12 +13,11 @@ export class ChangePasswordModal extends Component{
             passwordsMatch : true,
             
     };
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handlePasswordRepeatChange = this.handlePasswordRepeatChange.bind(this);
+        
         this.handleChangePassword = this.handleChangePassword.bind(this);
     }
 
-    handlePasswordChange(event)
+  /*  handlePasswordChange(event)
     {
         var isPassValid ; 
         if(event.target.value.length >= 6)
@@ -37,21 +36,19 @@ export class ChangePasswordModal extends Component{
         //if not let user know
         this.setState({passwordRepeat:event.target.value, passwordsMatch : true});
     }
-
-    handleChangePassword()
+*/
+    handleChangePassword(event)
     {
-        if(this.state.password.length > 0) {
+        var user = firebase.auth().currentUser;
+        var newPassword = window.prompt('upisite novu lozinku');
+      /*  if(this.state.password.length > 0) {
 
             if(this.state.password === this.state.passwordRepeat) {
 
                 this.setState({passwordsMatch : true})
-            
-        
+            */
 
-        var user = firebase.auth().currentUser;
-        
-
-        user.updatePassword(this.setState.password).then(function() {
+        user.updatePassword(newPassword).then(function() {
             // Update successful.
             console.log("Uspjesno promijenjeno")
         }).catch(function(error) {
@@ -60,8 +57,8 @@ export class ChangePasswordModal extends Component{
 
 })
 }
-}
-}
+
+
     
 
     render() {
@@ -73,22 +70,20 @@ export class ChangePasswordModal extends Component{
                 </div>
                 <div className="modal-body">
                 <div className="login-label">Lozinka</div>
-                <input type="password" className="form-control input-field" placeholder="Vaša lozinka" onChange={this.handlePasswordChange} value={this.state.password}/>
+                <input type="password" className="form-control input-field" placeholder="Vaša nova lozinka" onChange={this.handleChangePassword} value={this.state.password}/>
                 <div className={this.state.passValid ? "hidden":"validator-message"}>Lozinka mora imati najmanje 6 znakova</div>
-                <div className="login-label">Ponovite lozinku</div>
-                <input type="password" className="form-control input-field" placeholder="Ponovite lozinku" onChange={this.handlePasswordRepeatChange} value={this.state.passwordRepeat}/>
-                <div className={this.state.passwordsMatch ? "hidden":"validator-message"}>Lozinke se ne podudaraju</div>
-                </div>
+                
                 <div className="modal-footer">
                 <button type="button" className="btn btn-warning" onClick={this.handleChangePassword}>Promijeni lozinku!</button>
-                <button type="button" className="btn btn-secondary" onClick={this.props.closeChangePasswordModal}> Zatvori </button>
+                <button type="button" className="btn btn-secondary" onClick={this.props.onClose}> Zatvori </button>
+                </div>
                 </div>
             </Modal>
 
 
-
- 
         )
+ 
+        
 
 
     }

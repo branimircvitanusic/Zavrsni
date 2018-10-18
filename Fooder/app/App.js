@@ -249,7 +249,7 @@ export class App extends React.Component {
       
         <div className="site">
 
-            <NavigationComponent logoutUser = {this.logoutUser} handleChangePasswordClick = {this.handleChangePasswordClick} signedInUser = {this.state.signedInUser} handleLoginClick = {this.handleLoginClick} handleEditClick={this.handleEditClick} showReviewScreen = {this.showReviewScreen} cartClicked = {this.cartClicked} navClicked = {this.navClicked} navCartPrice = {this.state.navCartPrice}/>
+            <NavigationComponent logoutUser = {this.logoutUser} signedInUser = {this.state.signedInUser} handleLoginClick = {this.handleLoginClick} handleEditClick={this.handleEditClick} showReviewScreen = {this.showReviewScreen} cartClicked = {this.cartClicked} navClicked = {this.navClicked} navCartPrice = {this.state.navCartPrice}/>
             
             <LocationComponent  handleLocationSelected = {this.handleLocationSelected}/>
             {restoranOdabran}
@@ -278,7 +278,8 @@ export class App extends React.Component {
         
             {/* LOGIN MODAL */}
             <LoginModal userLoggedIn = {this.userLoggedIn} visible = {this.state.showLogin} onClose = {this.handleLoginClose} />
-            <EditModal signedInUser = {this.state.signedInUser} visible = {this.state.showEditModal} onClose = {this.closeEditModal} />
+            <EditModal signedInUser = {this.state.signedInUser} visible = {this.state.showEditModal} onClose = {this.closeEditModal} handleChangePasswordClick = {this.handleChangePasswordClick} />
+            <ChangePasswordModal visible = {this.state.showChangePasswordModal} onClose = {this.closeChangePasswordModal} />
             <InfoModal visible = {this.state.showInfoModal} message = {this.state.infoMessage} onClose = {this.closeInfoModal}/>
         </div>
      

@@ -14,7 +14,7 @@ export class EditModal extends Component{
            isLoading : true,
            infoMessage : '', 
            showInfo : false,
-           showChangePasswordModal : false
+           showChangePassword : false
          };
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -29,7 +29,7 @@ export class EditModal extends Component{
 
     closeChangePasswordModal()
     {
-        this.setState({showChangePasswordModal : false})
+        this.setState({showChangePassword : false})
     }
 
     closeInfoModal()
@@ -184,7 +184,7 @@ async handleUpdate()
         </div>        
         </div>
        { <InfoModal visible= {this.state.showInfo} message = {this.state.infoMessage} onClose = {this.closeInfoModal}/> }
-       { <ChangePasswordModal visible = {this.state.showChangePasswordModal} onClose = {this.closeChangePasswordModal} /> }
+       { } 
     </div>
 
         return(
@@ -192,6 +192,7 @@ async handleUpdate()
                 <Modal visible={this.props.visible} onClickBackdrop={this.modalBackdropClicked}>
             
                 {active}
+                <ChangePasswordModal visible = {this.state.showChangePassword} onClose = {this.closeChangePasswordModal} />
                 
                 </Modal>
         )
