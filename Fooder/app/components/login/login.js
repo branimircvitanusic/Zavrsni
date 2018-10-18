@@ -29,13 +29,13 @@ export class Login extends Component{
         <div className="login-container">
             <div className="input-container">
             <div className="login-label">E-mail</div>
-            <input type="text" className="form-control input-field " placeholder="Your email address" onChange={this.handleEmailChange} value={this.state.email}/>
-            <div className="login-label">Password</div>
-            <input type="password" className="form-control input-field" placeholder="Your password" onChange={this.handlePasswordChange} value={this.state.password}/>
+            <input type="text" className="form-control input-field " placeholder="Vaša email adresa" onChange={this.handleEmailChange} value={this.state.email}/>
+            <div className="login-label">Lozinka</div>
+            <input type="password" className="form-control input-field" placeholder="Vaša lozinka" onChange={this.handlePasswordChange} value={this.state.password}/>
             </div>
             <div className="login-buttons-wrap">
                 <button onClick={this.handleLogin} className="btn btn-outline-primary">LOGIN</button>
-                <a className="forgot-password">Forgot your password?</a>
+                <a className="forgot-password">Zaboravili ste lozinku?</a>
             </div>
         </div>
         )

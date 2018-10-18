@@ -14,9 +14,8 @@ var config = {
 
   
 // Initialize Cloud Firestore through Firebase
-var db = firebase.firestore();
+export const firestore = firebase.firestore();
 
-// Disable deprecated features
-db.settings({
+firestore.settings({
   timestampsInSnapshots: true
-});
+})

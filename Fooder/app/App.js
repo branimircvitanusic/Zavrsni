@@ -13,13 +13,21 @@ import { restoran } from './data/restaurants';
 import {RestoranInfoComponent} from './components/restoran/restoranInfoComponent';
 import {LoginModal} from './components/login/loginModal.js';
 import fire from './config/FirebaseConfig.js';
+import {EditModal} from './components/login/editModal.js';
 import {InfoModal} from './components/info/infoModal.js';
+import {ChangePasswordModal} from './components/login/changePasswordModal.js';
 
 export class App extends React.Component {
     constructor(props)
     {
         super(props);
-        this.state ={Grad : '', Kvart : '',Restoran : '', RestoranInfo : '',infoShow : false, reviewShow : false,Meal : {}, app_state:0,finalOrder : {},clearCart:false,showCart : false,showNav : false, navCartPrice : 0, showLogin : false,signedInUser : null,showInfoModal : false};
+        this.state ={
+        Grad : '', Kvart : '',Restoran : '', RestoranInfo : '',infoShow : false,
+         reviewShow : false,Meal : {}, app_state:0,finalOrder : {},clearCart:false,showCart : false,showNav : false, navCartPrice : 0, 
+         showLogin : false,signedInUser : null,showInfoModal : false, showEditModal : false, showChangePasswordModal : false
+        
+        };
+
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
         this.handleRestoranSelected = this.handleRestoranSelected.bind(this);
         this.forceRestSelect = this.forceRestSelect.bind(this);
@@ -41,6 +49,11 @@ export class App extends React.Component {
         this.userLoggedIn = this.userLoggedIn.bind(this);
         this.logoutUser = this.logoutUser.bind(this); 
         this.closeInfoModal = this.closeInfoModal.bind(this);
+        this.closeEditModal = this.closeEditModal.bind(this);
+        this.handleEditClick = this.handleEditClick.bind(this);
+        this.handleChangePasswordClick = this.handleChangePasswordClick.bind(this);
+        this.closeChangePasswordModal = this.closeChangePasswordModal.bind(this);
+        
     }
     componentWillMount()
     {  
@@ -71,6 +84,23 @@ export class App extends React.Component {
     {
         this.setState({showLogin : true})
     }
+    handleEditClick()
+    {
+        this.setState({showEditModal : true})
+    }
+    closeEditModal()
+    {
+        this.setState({showEditModal : false})
+    }
+    handleChangePasswordClick()
+    {
+        this.setState({showChangePasswordModal : true})
+    }
+    closeChangePasswordModal()
+    {
+        this.setState({showChangePasswordModal : false})
+    }
+    
     handleLoginClose()
     {
         this.setState({showLogin : false})
@@ -166,6 +196,11 @@ export class App extends React.Component {
     {
         this.setState({showInfoModal : false, infoMessage : ''})
     }
+    closeEditModal()
+        {
+            this.setState({showEditModal : false})
+        }
+    close
    
     render() 
     {   
@@ -214,7 +249,7 @@ export class App extends React.Component {
       
         <div className="site">
 
-            <NavigationComponent logoutUser = {this.logoutUser} signedInUser = {this.state.signedInUser} handleLoginClick = {this.handleLoginClick} showReviewScreen = {this.showReviewScreen} cartClicked = {this.cartClicked} navClicked = {this.navClicked} navCartPrice = {this.state.navCartPrice}/>
+            <NavigationComponent logoutUser = {this.logoutUser} handleChangePasswordClick = {this.handleChangePasswordClick} signedInUser = {this.state.signedInUser} handleLoginClick = {this.handleLoginClick} handleEditClick={this.handleEditClick} showReviewScreen = {this.showReviewScreen} cartClicked = {this.cartClicked} navClicked = {this.navClicked} navCartPrice = {this.state.navCartPrice}/>
             
             <LocationComponent  handleLocationSelected = {this.handleLocationSelected}/>
             {restoranOdabran}
@@ -243,7 +278,7 @@ export class App extends React.Component {
         
             {/* LOGIN MODAL */}
             <LoginModal userLoggedIn = {this.userLoggedIn} visible = {this.state.showLogin} onClose = {this.handleLoginClose} />
-            
+            <EditModal signedInUser = {this.state.signedInUser} visible = {this.state.showEditModal} onClose = {this.closeEditModal} />
             <InfoModal visible = {this.state.showInfoModal} message = {this.state.infoMessage} onClose = {this.closeInfoModal}/>
         </div>
      

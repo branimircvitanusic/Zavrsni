@@ -36,7 +36,7 @@ export class NavigationComponent extends React.Component {
         }
         else
         {
-            userField = <div className="user-signed-in">{signedInUser.email} <span onClick = {() => {this.props.logoutUser()}}className="user-signout-icon"><i className="fa fa-sign-out"></i></span></div>
+            userField = <div className="user-signed-in"><span onClick = {() => {this.props.handleEditClick()}}>{signedInUser.email}</span> <span onClick = {() => {this.props.logoutUser()}}className="user-signout-icon"><i className="fa fa-sign-out"></i></span></div>
         }
         return (  
             <header className="navigation">

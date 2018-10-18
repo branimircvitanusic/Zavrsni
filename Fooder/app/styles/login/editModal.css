@@ -1,0 +1,14 @@
+.change-data-container
+{
+    padding: 20px;
+}
+.change-data-header
+{
+    color: white;
+    background-color: #007bff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

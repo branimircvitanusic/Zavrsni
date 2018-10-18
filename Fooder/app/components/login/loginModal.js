@@ -33,23 +33,25 @@ export class LoginModal extends Component{
     handleLogin(user)
     {
         //api call to login user
+        var _this = this
         fire.auth().signInWithEmailAndPassword(user.email, user.password)
         .then(response => {
-            this.props.userLoggedIn(user);
+            _this.props.userLoggedIn(user);
         })
         .catch(error => {
-            this.setState({showInfo : true,infoMessage : error.message})
+            _this.setState({showInfo : true,infoMessage : error.message})
         })
     }
     async handleRegister(user)
     {
         //api call to register user
+        
         await fire.auth().createUserWithEmailAndPassword(user.email,user.password)
         .then(response => 
             {
                 var db = fire.firestore();
                 db.collection('users').doc(response.user.uid).set({firstName : user.firstName,lastName : user.lastName , email : user.email, phone : user.phone,adress : user.adress})
-                .then(this.setState({isLogin : true, isRegister : false, showInfo : true,infoMessage : "Registration successfull!"}))
+                .then(this.setState({isLogin : true, isRegister : false, showInfo : true,infoMessage : "Uspješno ste registrirani!"}))
             })
         .catch(error => 
             {
@@ -75,7 +77,7 @@ export class LoginModal extends Component{
                         <h5 className="modal-title modal-option-1">Login</h5>
                     </div>
                     <div onClick={this.isRegister} className={this.state.isRegister ? "header-half header-active" : "header-half"}>
-                        <h5 className="modal-title modal-option-2">Register</h5>
+                        <h5 className="modal-title modal-option-2">Registracija</h5>
                     </div>
                 </div>
                 <div className="modal-body">
@@ -83,7 +85,7 @@ export class LoginModal extends Component{
                 </div>
                 <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" onClick={this.props.onClose}>
-                    Close
+                    Zatvori
                 </button>
                 </div>
                 <InfoModal visible={this.state.showInfo} message={this.state.infoMessage} onClose= {this.closeInfoModal}/>

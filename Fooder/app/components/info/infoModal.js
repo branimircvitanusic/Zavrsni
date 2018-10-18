@@ -17,7 +17,7 @@ export class InfoModal extends Component{
                 </div>
                 <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" onClick={this.props.onClose}>
-                    OK
+                    Zatvori
                 </button>
                 </div>
             </Modal>

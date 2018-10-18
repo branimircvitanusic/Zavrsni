@@ -89,7 +89,7 @@ export class Register extends Component{
         }
         else
         {
-            this.setState({showInfo : true,infoMessage : 'One or more fields is empty!'})
+            this.setState({showInfo : true,infoMessage : 'Jedno ili više polja je prazno!'})
         }
     }
     closeInfo()
@@ -100,29 +100,29 @@ export class Register extends Component{
     {
         return(
         <div className="register-container">
-            <p className="text-center register-message">Please enter your information</p>
+            <p className="text-center register-message">Molimo unesite podatke</p>
             <div className="input-container">
-            <div className="login-label">First name</div>
-            <input type="text" className="form-control input-field " placeholder="Your first name" onChange={this.handleNameChange} value={this.state.firstName}/>
-            <div className="login-label">Last name</div>
-            <input type="text" className="form-control input-field " placeholder="Your last name" onChange={this.handleLastNameChange} value={this.state.lastName}/>
+            <div className="login-label">Ime</div>
+            <input type="text" className="form-control input-field " placeholder="Vaše ime" onChange={this.handleNameChange} value={this.state.firstName}/>
+            <div className="login-label">Prezime</div>
+            <input type="text" className="form-control input-field " placeholder="Vaše prezime" onChange={this.handleLastNameChange} value={this.state.lastName}/>
             <div className="login-label">E-mail</div>
-            <input type="text" className="form-control input-field " placeholder="Your email address" onChange={this.handleEmailChange} value={this.state.email}/>
-            <div className={this.state.emailValid ? "hidden":"validator-message"}>Email has to be valid</div>
-            <div className="login-label">Password</div>
-            <input type="password" className="form-control input-field" placeholder="Your password" onChange={this.handlePasswordChange} value={this.state.password}/>
-            <div className={this.state.passValid ? "hidden":"validator-message"}>Password has to be at least 6 characters long</div>
-            <div className="login-label">Repeat password</div>
-            <input type="password" className="form-control input-field" placeholder="Repeat password" onChange={this.handlePasswordRepeatChange} value={this.state.passwordRepeat}/>
-            <div className={this.state.passwordsMatch ? "hidden":"validator-message"}>Password's don't match</div>
-            <div className="login-label">Adress</div>
-            <input type="text" className="form-control input-field " placeholder="Your adress" onChange={this.handleAdressChange} value={this.state.adress}/>
-            <div className="login-label">Phone number</div>
-            <input type="text" className="form-control input-field " placeholder="Your phone number" onChange={this.handlePhoneChange} value={this.state.phone}/>
+            <input type="text" className="form-control input-field " placeholder="Vaša email adresa" onChange={this.handleEmailChange} value={this.state.email}/>
+            <div className={this.state.emailValid ? "hidden":"validator-message"}>Email mora biti valjan.</div>
+            <div className="login-label">Lozinka</div>
+            <input type="password" className="form-control input-field" placeholder="Vaša lozinka" onChange={this.handlePasswordChange} value={this.state.password}/>
+            <div className={this.state.passValid ? "hidden":"validator-message"}>Lozinka mora imati najmanje 6 znakova</div>
+            <div className="login-label">Ponovite lozinku</div>
+            <input type="password" className="form-control input-field" placeholder="Ponovite lozinku" onChange={this.handlePasswordRepeatChange} value={this.state.passwordRepeat}/>
+            <div className={this.state.passwordsMatch ? "hidden":"validator-message"}>Lozinke se ne podudaraju</div>
+            <div className="login-label">Adresa</div>
+            <input type="text" className="form-control input-field " placeholder="Vaša adresa" onChange={this.handleAdressChange} value={this.state.adress}/>
+            <div className="login-label">Broj telefona</div>
+            <input type="text" className="form-control input-field " placeholder="Vaš broj telefona" onChange={this.handlePhoneChange} value={this.state.phone}/>
             </div>
             <div className="login-buttons-wrap">
-                <button onClick = {this.handleRegister} className="btn btn-outline-primary">REGISTER</button>
-                <a onClick = {this.props.backToLogin} className="back-to-login">Already have account? <b>LOGIN</b></a>
+                <button onClick = {this.handleRegister} className="btn btn-outline-primary">REGISTRACIJA</button>
+                <a onClick = {this.props.backToLogin} className="back-to-login">Već imate račun? <b>LOGIN</b></a>
             
             </div>
             <InfoModal visible= {this.state.showInfo} message = {this.state.infoMessage} onClose = {this.closeInfo}/>
