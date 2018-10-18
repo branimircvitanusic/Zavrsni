@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import Modal from 'react-bootstrap4-modal';
 import '../../styles/login/loginModal.css';
 import fire from '../../config/FirebaseConfig.js';
+import { InfoModal } from '../info/infoModal';
 
 export class ChangePasswordModal extends Component{
     constructor(props){
@@ -11,10 +12,36 @@ export class ChangePasswordModal extends Component{
             passwordRepeat : '',
             passValid : true,
             passwordsMatch : true,
+            infoMessage : '', 
+            showInfo : false,
             
     };
         
         this.handleChangePassword = this.handleChangePassword.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.closeInfoModal = this.closeInfoModal.bind(this);
+        this.passwordChangedModal = this.passwordChangedModal.bind(this);
+        this.passwordNotChangedModal = this.passwordNotChangedModal.bind(this);
+
+    }
+
+    closeInfoModal()
+    {
+        this.setState({showInfo : false, infoMessage : ''})
+    }
+    passwordChangedModal()
+    {
+        this.setState({showInfo : true, infoMessage : 'Uspjesno promijenjeno'})
+    }
+
+    passwordNotChangedModal()
+    {
+        this.setState({showInfo : true, infoMessage : 'Mora imati najmanje 6 znakova!'})
+    }
+
+    handlePasswordChange(event)
+    {
+        this.setState({password : event.target.value})
     }
 
   /*  handlePasswordChange(event)
@@ -37,25 +64,41 @@ export class ChangePasswordModal extends Component{
         this.setState({passwordRepeat:event.target.value, passwordsMatch : true});
     }
 */
-    handleChangePassword(event)
+    handleChangePassword(user)
     {
         var user = firebase.auth().currentUser;
-        var newPassword = window.prompt('upisite novu lozinku');
+        
+        if(this.state.password > 6)
+        var newPassword = this.state.password;
       /*  if(this.state.password.length > 0) {
 
             if(this.state.password === this.state.passwordRepeat) {
 
                 this.setState({passwordsMatch : true})
             */
-
+           
+            
+         
         user.updatePassword(newPassword).then(function() {
             // Update successful.
-            console.log("Uspjesno promijenjeno")
-        }).catch(function(error) {
+           
+          (console.log("Uspjesno promijenjeno"))
+        })
+        .catch(function(error) {
             // An error happened.
-            console.log("Nije promijenjeno")
+            //this.setState({showInfo: true, infoMessage : 'Lozinka mora imati najmanje 6 znakova!'})
+        (console.log("Nije uspjesno promijenjeno!"))
 
-})
+
+        }
+)
+//this.setState({showInfo : true, infoMessage : 'Uspjesno ste promijenili lozinku!'})
+/*if(newPassword > 6)
+
+
+else
+*/
+
 }
 
 
@@ -70,14 +113,15 @@ export class ChangePasswordModal extends Component{
                 </div>
                 <div className="modal-body">
                 <div className="login-label">Lozinka</div>
-                <input type="password" className="form-control input-field" placeholder="Vaša nova lozinka" onChange={this.handleChangePassword} value={this.state.password}/>
-                <div className={this.state.passValid ? "hidden":"validator-message"}>Lozinka mora imati najmanje 6 znakova</div>
+                <input type="password" className="form-control input-field" placeholder="Lozinka mora imati najmanje 6 znakova!" onChange={this.handlePasswordChange} />
+                
                 
                 <div className="modal-footer">
                 <button type="button" className="btn btn-warning" onClick={this.handleChangePassword}>Promijeni lozinku!</button>
                 <button type="button" className="btn btn-secondary" onClick={this.props.onClose}> Zatvori </button>
                 </div>
                 </div>
+                { <InfoModal visible= {this.state.showInfo} message = {this.state.infoMessage} onClose = {this.closeInfoModal}/> }
             </Modal>
 
 
