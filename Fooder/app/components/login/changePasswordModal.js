@@ -81,13 +81,14 @@ export class ChangePasswordModal extends Component{
          
         user.updatePassword(newPassword).then(function() {
             // Update successful.
-           
-          (console.log("Uspjesno promijenjeno"))
+           alert('Uspjesno promijenjeno!')
+          //(console.log("Uspjesno promijenjeno"))
         })
         .catch(function(error) {
             // An error happened.
             //this.setState({showInfo: true, infoMessage : 'Lozinka mora imati najmanje 6 znakova!'})
-        (console.log("Nije uspjesno promijenjeno!"))
+            alert('Lozinka mora imati najmanje 6 znakova!')
+       // (console.log("Nije uspjesno promijenjeno!"))
 
 
         }
